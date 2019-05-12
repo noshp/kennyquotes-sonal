@@ -35,7 +35,7 @@ func ParseAndFilterSlackMessages(filename string, userID string) []string {
 
 	// for each message in the array of slackmessges filter by user id and if it's not empty or if its not a link
 	for _, message := range _slackMessages {
-		if message.User == userID && message.Text != "" && !strings.HasPrefix(message.Text, "<http") {
+		if message.User == userID && message.Text != "" && !strings.HasPrefix(message.Text, "<h") && len(message.Text) < 100 {
 			fmt.Println(userID, " said ", message.Text)
 			messages = append(messages, message.Text)
 		}
